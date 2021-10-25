@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { BrandGithub, BrandGitlab, BrandLinkedin } from '@vicons/tabler'
-import { computed } from 'vue'
 import { useGTag } from './plugins/gtag'
 import { useMatomo } from './plugins/matomo'
 
@@ -11,33 +10,25 @@ const redesSociais: { url: string, rotulo: string, icone?: any, corFundo?: strin
   {
     rotulo: 'LinkedIn',
     url: 'https://www.linkedin.com/in/jralison',
-    corFundo: 'blue-600',
-    corTexto: 'white',
+    corFundo: 'hover:bg-blue-600 focus:bg-blue-600',
+    corTexto: 'hover:text-white focus:text-white',
     icone: BrandLinkedin,
   },
   {
     rotulo: 'Github',
     url: 'https://www.github.com/jralison',
-    corFundo: 'gray-600',
-    corTexto: 'white',
+    corFundo: 'hover:bg-gray-600 focus:bg-gray-600',
+    corTexto: 'hover:text-white focus:text-white',
     icone: BrandGithub,
   },
   {
     rotulo: 'GitLab',
     url: 'https://www.gitlab.com/jralison',
-    corFundo: 'yellow-600',
-    corTexto: 'white',
+    corFundo: 'hover:bg-yellow-600 focus:bg-yellow-600',
+    corTexto: 'hover:text-white focus:text-white',
     icone: BrandGitlab,
   },
 ]
-
-const variantesFundo = (cor: string) => [`hover:bg-${cor}`, `focus:bg-${cor}`]
-const variantesTexto = (cor: string) => [`hover:text-${cor}`, `focus:text-${cor}`]
-
-const variantes = computed<string[][]>(() => redesSociais.map<string[]>(({ corTexto, corFundo }) => [
-  ...variantesFundo(corFundo || 'gray-300'),
-  ...variantesTexto(corTexto || 'black'),
-]))
 </script>
 
 <template>
@@ -66,9 +57,9 @@ const variantes = computed<string[][]>(() => redesSociais.map<string[]>(({ corTe
       <div class="uppercase text-sm tracking-wide font-semibold">Me encontre nas redes sociais</div>
       <div class="h-min space-x-4 space-y-4">
         <a
-          v-for="(item, i) in redesSociais"
+          v-for="item in redesSociais"
           :key="item.url"
-          :class="['socialLink', ...variantes[i]]"
+          :class="['socialLink', item.corTexto || '', item.corFundo || '']"
           :href="item.url"
         >
           <component :is="item.icone" class="w-6 h-6 -mt-0.5 mr-1 inline-block object-scale-down" />
