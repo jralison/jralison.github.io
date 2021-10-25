@@ -41,10 +41,10 @@ const variantes = computed<string[][]>(() => redesSociais.map<string[]>(({ corTe
 <template>
   <div class="h-full flex flex-col gap-4 place-content-center space-y-8">
     <div class="mx-auto">
-      <div class="flex flex-row gap-4 space-x-4">
+      <div class="flex flex-col sm:flex-row gap-4 sm:space-x-4">
         <div class="flex-none self-center">
           <img src="/me.jpg"
-               class="object-cover rounded-full w-28 h-28 transform hover:scale-125 transition-transform ring ring-white ring-opacity-40"
+               class="object-cover rounded-full w-28 h-28 transform scale-110 sm:scale-100 sm:hover:scale-125 transition-transform ring ring-white ring-opacity-40"
                alt="Uma foto minha com duas pulseiras na mão, me observando no reflexo do computador"
           />
         </div>
@@ -61,8 +61,8 @@ const variantes = computed<string[][]>(() => redesSociais.map<string[]>(({ corTe
       </div>
     </div>
     <div v-if="redesSociais.length > 0" class="mx-auto text-center text-white">
-      <div class="mb-4 uppercase text-sm tracking-wide font-semibold">Me encontre nas redes sociais</div>
-      <div class="h-min space-x-8">
+      <div class="uppercase text-sm tracking-wide font-semibold">Me encontre nas redes sociais</div>
+      <div class="h-min space-x-4 space-y-4">
         <a
           v-for="(item, i) in redesSociais"
           :key="item.url"
