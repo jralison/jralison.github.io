@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { BrandGithub, BrandGitlab, BrandLinkedin } from '@vicons/tabler'
 import { computed } from 'vue'
+import { useGTag } from './plugins/gtag'
 import { useMatomo } from './plugins/matomo'
 
 useMatomo()
+useGTag()
 
 const redesSociais: { url: string, rotulo: string, icone?: any, corFundo?: string, corTexto?: string }[] = [
   {

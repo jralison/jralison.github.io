@@ -12,6 +12,10 @@ interface ImportMetaEnv {
   readonly VITE_MATOMO_HOST: string
   readonly VITE_MATOMO_SCRIPT_ID: string
   readonly VITE_MATOMO_ENABLED: string
+
+  readonly VITE_GTAG_ID: string
+  readonly VITE_GTAG_ENABLED: string
+  readonly VITE_GTAG_DEBUG: string
 }
 
 interface ImportMeta {
