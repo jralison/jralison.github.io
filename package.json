@@ -7,17 +7,16 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.16"
+    "vue": "^3.5.31"
   },
   "devDependencies": {
-    "@vicons/tabler": "^0.11.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "@vicons/tabler": "^0.13.0",
     "@vicons/utils": "^0.1.4",
-    "@vitejs/plugin-vue": "^1.9.3",
-    "autoprefixer": "^10.3.7",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^2.2.17",
-    "typescript": "^4.4.3",
-    "vite": "^8.0.0",
-    "vue-tsc": "^0.3.0"
+    "@vitejs/plugin-vue": "^6.0.5",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3",
+    "vue-tsc": "^3.2.6"
   }
 }

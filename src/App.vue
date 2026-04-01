@@ -6,26 +6,23 @@ import { useMatomo } from './plugins/matomo'
 useMatomo()
 useGTag()
 
-const redesSociais: { url: string, rotulo: string, icone?: any, corFundo?: string, corTexto?: string }[] = [
+const redesSociais: { url: string, rotulo: string, icone?: any, classe?: string }[] = [
   {
     rotulo: 'LinkedIn',
     url: 'https://www.linkedin.com/in/jralison',
-    corFundo: 'hover:bg-blue-600 focus:bg-blue-600',
-    corTexto: 'hover:text-white focus:text-white',
+    classe: 'social-linkedin',
     icone: BrandLinkedin,
   },
   {
     rotulo: 'Github',
     url: 'https://www.github.com/jralison',
-    corFundo: 'hover:bg-gray-600 focus:bg-gray-600',
-    corTexto: 'hover:text-white focus:text-white',
+    classe: 'social-github',
     icone: BrandGithub,
   },
   {
     rotulo: 'GitLab',
     url: 'https://www.gitlab.com/jralison',
-    corFundo: 'hover:bg-yellow-600 focus:bg-yellow-600',
-    corTexto: 'hover:text-white focus:text-white',
+    classe: 'social-gitlab',
     icone: BrandGitlab,
   },
 ]
@@ -55,11 +52,11 @@ const redesSociais: { url: string, rotulo: string, icone?: any, corFundo?: strin
     </div>
     <div v-if="redesSociais.length > 0" class="mx-auto text-center text-white">
       <div class="uppercase text-sm tracking-wide font-semibold">Me encontre nas redes sociais</div>
-      <div class="h-min space-x-4 space-y-4">
+      <div class="h-min space-x-4 space-y-4 mt-4">
         <a
           v-for="item in redesSociais"
           :key="item.url"
-          :class="['socialLink', item.corTexto || '', item.corFundo || '']"
+          :class="['socialLink', item.classe]"
           :href="item.url"
         >
           <component :is="item.icone" class="w-6 h-6 -mt-0.5 mr-1 inline-block object-scale-down" />
@@ -71,19 +68,30 @@ const redesSociais: { url: string, rotulo: string, icone?: any, corFundo?: strin
 </template>
 
 <style>
+@reference './index.css';
+
 ::selection {
-    @apply bg-blue-50 bg-opacity-50;
+    @apply bg-blue-50/50;
 }
 
 .socialLink::selection {
-    @apply bg-blue-300 bg-opacity-50;
+    @apply bg-blue-300/50;
 }
 
 .socialLink {
     @apply inline-block py-2 px-5 rounded-md;
-    @apply border-2 border-blue-50 border-opacity-0 hover:border-opacity-100 focus:border-opacity-100;
+    @apply border-2 border-blue-50/0 hover:border-blue-50 focus:border-blue-50;
     @apply bg-gray-50 hover:bg-gray-300 focus:bg-gray-300;
-    @apply text-black uppercase font-semibold antialiased;
+    @apply text-black hover:text-white uppercase font-semibold antialiased;
     @apply transform transition-all focus:outline-none;
 }
+
+/*noinspection CssUnusedSymbol*/
+.social-linkedin { @apply hover:bg-blue-600   focus:bg-blue-600;   }
+
+/*noinspection CssUnusedSymbol*/
+.social-github   { @apply hover:bg-gray-600   focus:bg-gray-600;   }
+
+/*noinspection CssUnusedSymbol*/
+.social-gitlab   { @apply hover:bg-yellow-600 focus:bg-yellow-600; }
 </style>
